@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vite App</title>
+</head>
+
+<body>
+  <div id="app">
+    <form method="post">
+      <label for="name">Name</label>
+      <input required type="text" id="name" name="name" placeholder="Enter name">
+
+      <label for="email">Email</label>
+      <input required type="email" id="email" name="email" placeholder="Enter Email">
+
+      <label for="password">Password</label>
+      <input required type="password" id="password" name="password" placeholder="Enter password">
+
+      <label for="dob">Date of Birth</label>
+      <input required type="date" id="dob" name="dob">
+
+      <div class="terms">
+        <input type="checkbox" id="acceptTerms" name="acceptTerms">
+        <label for="acceptTerms">Accept Terms & Conditions</label>
+      </div>
+      <button id="submit" type="submit">Submit</button>
+    </form>
+
+  </div>
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Dob</th>
+      <th>Accepted Terms?</th>
+    </thead>
+  </table>
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
