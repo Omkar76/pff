@@ -1,12 +1,11 @@
 let users = [];
 /**
- * 
- * @param {SubmitEvent} event 
+ *  @param {SubmitEvent} event 
  */
 function submitHandler(event) {
-    event.preventDefault();    
+    event.preventDefault();   
     
-    if(!dateValidator()){
+    if(document.querySelector('form').checkValidity()){
         return;
     }
 
@@ -64,19 +63,18 @@ function dateValidator(){
 
     const years = getAgeInYears(dob);
 
-    if(!(years >= 18 && years <=55)){
+    if(!(years >= 18 && years <= 55)){
         dobInput.setCustomValidity("Age must be 18 to 55");
         dobInput.reportValidity();
-        return false;
     }else{
-        dobInput.setCustomValidity("")
-        return true;
+        dobInput.setCustomValidity("");
+        dobInput.reportValidity();
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('form').addEventListener('submit', submitHandler);
-    // document.querySelector('#dob').addEventListener('', dateValidator);
+    document.querySelector('#dob').addEventListener('beforeinput', dateValidator);
     users = JSON.parse(localStorage.getItem('users')) || [];
 
     for(let user of users){
