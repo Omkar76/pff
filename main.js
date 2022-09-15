@@ -5,7 +5,7 @@ let users = [];
 function submitHandler(event) {
     event.preventDefault();   
     
-    if(document.querySelector('form').checkValidity()){
+    if(!dateValidator()){
         return;
     }
 
@@ -66,15 +66,19 @@ function dateValidator(){
     if(!(years >= 18 && years <= 55)){
         dobInput.setCustomValidity("Age must be 18 to 55");
         dobInput.reportValidity();
+        return false;
     }else{
         dobInput.setCustomValidity("");
         dobInput.reportValidity();
+        return true;
     }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector('form').addEventListener('submit', submitHandler);
-    document.querySelector('#dob').addEventListener('beforeinput', dateValidator);
+    document.querySelector("#dob").addEventListener('input', (e)=>{
+        e.target.setCustomValidity("");
+    });
     users = JSON.parse(localStorage.getItem('users')) || [];
 
     for(let user of users){
